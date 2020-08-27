@@ -3,7 +3,7 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Adicionando novo funcionário</h2>
+<h2>Novo funcionário</h2>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -18,7 +18,7 @@
             <!-- EMPLOYEE ID DIV-->
             <div class="form-group">
                 @Html.LabelFor(model => model.EmployeeId, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                <div class="col-md-2">
                     @Html.EditorFor(model => model.EmployeeId, new { htmlAttributes = new { @class = "form-control", @id = "id" } })
                     @Html.ValidationMessageFor(model => model.EmployeeId, "", new { @class = "text-danger" })
                 </div>
@@ -26,7 +26,7 @@
             <!-- EMPLOYEE FIRST NAME DIV-->
             <div class="form-group">
                 @Html.LabelFor(model => model.EmployeeFirstName, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                <div class="col-md-5">
                     @Html.EditorFor(model => model.EmployeeFirstName, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.EmployeeFirstName, "", new { @class = "text-danger" })
                 </div>
@@ -34,7 +34,7 @@
             <!-- EMPLOYEE LAST NAME DIV-->
             <div class="form-group">
                 @Html.LabelFor(model => model.EmployeeLastName, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                <div class="col-md-5">
                     @Html.EditorFor(model => model.EmployeeLastName, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.EmployeeLastName, "", new { @class = "text-danger" })
                 </div>
@@ -42,7 +42,7 @@
             <!-- EMPLOYEE EMAIL DIV-->
             <div class="form-group">
                 @Html.LabelFor(model => model.EmployeeEmail, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                <div class="col-md-5">
                     @Html.EditorFor(model => model.EmployeeEmail, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.EmployeeEmail, "", new { @class = "text-danger" })
                 </div>
@@ -50,16 +50,30 @@
             <!-- EMPLOYEE PASSWORD DIV-->
             <div class="form-group">
                 @Html.LabelFor(model => model.EmployeePassword, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                <div class="col-md-5">
                     @Html.EditorFor(model => model.EmployeePassword, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.EmployeePassword, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- DEPARTMENT SELECT-->
+            <div class="form-group">
+                @Html.LabelFor(model => model.DepartmentId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div  class="col-md-3 col-lg-3">
+                    <select id="departmentName" class = "form-control" name="DepartmentId">
+                        <option value="" selected>Nenhum</option>
+                        <option value="1">Administrativo</option>
+                        <option value="2">TI</option>
+                        <option value="3">RH</option>
+                        <option value="4">Financeiro</option>
+                    </select>
                 </div>
             </div>
 
             <!-- EMPLOYEE SUBMIT BUTTON-->
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Adicionar" class="btn btn-outline-success" />
+                    <button type="submit" value="Adicionar" class="btn btn-outline-success">Adicionar</button>
                 </div>
             </div>
         </fieldset>

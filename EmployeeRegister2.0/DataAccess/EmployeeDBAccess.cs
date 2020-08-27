@@ -31,11 +31,13 @@ namespace EmployeeRegister2._0.DataAccess
                 SqlDataReader dtReader = cmd.ExecuteReader();
                 while (dtReader.Read())
                 {
+           
                     Employee emp = new Employee();
                     emp.EmployeeId = Convert.ToInt32(dtReader["Employee_Id"].ToString());
                     emp.EmployeeFirstName = dtReader["Employee_FirstName"].ToString();
                     emp.EmployeeLastName = dtReader["Employee_LastName"].ToString();
                     emp.EmployeeEmail = dtReader["Employee_Email"].ToString();
+                    emp.DepartmentId = Convert.ToInt32(dtReader["DepartmentId"].ToString());
 
                     employeeList.Add(emp);
                 }
@@ -57,6 +59,7 @@ namespace EmployeeRegister2._0.DataAccess
                 cmd.Parameters.AddWithValue("@EmployeeLastName", employee.EmployeeLastName);
                 cmd.Parameters.AddWithValue("@EmployeeEmail", employee.EmployeeEmail);
                 cmd.Parameters.AddWithValue("@EmployeePassword", employee.EmployeePassword);
+                cmd.Parameters.AddWithValue("@DepartmentId", employee.DepartmentId);
 
                 connection.Open();  //OPEN
                 cmd.ExecuteNonQuery(); //EXECUTE
@@ -76,11 +79,11 @@ namespace EmployeeRegister2._0.DataAccess
                 cmd.Parameters.AddWithValue("@EmployeeFirstName", employee.EmployeeFirstName);
                 cmd.Parameters.AddWithValue("@EmployeeLastName", employee.EmployeeLastName);
                 cmd.Parameters.AddWithValue("@EmployeeEmail", employee.EmployeeEmail);
-                    
+                cmd.Parameters.AddWithValue("@DepartmentId", employee.DepartmentId);
 
                 connection.Open();  //OPEN
                 cmd.ExecuteNonQuery(); //EXECUTE
-                connection.Close();  //CLOSE
+                connection.Close();  //CLOSE        
             }
 
         }
@@ -106,6 +109,7 @@ namespace EmployeeRegister2._0.DataAccess
         public Employee GetEmployeeById(int empId)
         {
             Employee emp = new Employee();
+          
 
             using (SqlConnection connection = new SqlConnection(connectionString()))
             {
@@ -121,6 +125,7 @@ namespace EmployeeRegister2._0.DataAccess
                     emp.EmployeeFirstName = dtReader["Employee_FirstName"].ToString();
                     emp.EmployeeLastName = dtReader["Employee_LastName"].ToString();
                     emp.EmployeeEmail = dtReader["Employee_Email"].ToString();
+                    emp.DepartmentId = Convert.ToInt32(dtReader["DepartmentId"].ToString());
                 }
 
                 dtReader.Close();

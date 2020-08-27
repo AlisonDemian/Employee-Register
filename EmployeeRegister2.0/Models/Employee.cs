@@ -24,5 +24,8 @@ namespace EmployeeRegister2._0.Models
         [Required(ErrorMessage = "Adicione uma senha!")]
         [DataType(DataType.Password)]
         public string EmployeePassword { get; set; }
+        [Display(Name = "Departamento")]
+        [Required(ErrorMessage = "Selecione o departamento!")]
+        public int DepartmentId { get; set; }
     }
 }

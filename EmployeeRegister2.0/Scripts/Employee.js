@@ -33,16 +33,17 @@ function EditEmployee(idEmp) {
     
 
     if (idEmp != null) {
-        $.ajax({
+        $.ajax({    
             type: 'GET',
-            url: '/Employee/SearchEmployee',
+            url: '/Employee/SearchEmployee',  // SEARCH EMPLOYEE
             data: { id: idEmp },
             success: function (employee) {
                 $('#id').val(employee.EmployeeId);
                 $('#nome').val(employee.EmployeeFirstName);
                 $('#sobrenome').val(employee.EmployeeLastName);
                 $('#email').val(employee.EmployeeEmail);
-
+                $('#departmentId').val(employee.DepartmentId);
+             
                 modalBgEdit.classList.add('popup-active');
             },
             error: function () {
