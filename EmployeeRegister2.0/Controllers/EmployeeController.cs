@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using System.Net.Mail;
 namespace EmployeeRegister2._0.Controllers
 {
     public class EmployeeController : Controller
@@ -39,8 +39,36 @@ namespace EmployeeRegister2._0.Controllers
             if (ModelState.IsValid)
             {
                 employeeDBAccess.CreateEmployee(employee);
+
+                // EMAIL SENDER
+                /*
+                MailMessage mail = new MailMessage();
+                mail.To.Add(employee.EmployeeEmail); // Employee Email here (fake email in this case)
+                mail.From = new MailAddress("Company Email HERE", "Email head", System.Text.Encoding.UTF8);
+                mail.Subject = "Subject HERE";
+                mail.SubjectEncoding = System.Text.Encoding.UTF8;
+                mail.Body = "(TESTE) Olá, sua conta foi atualizada no programa Funcionários.";
+                mail.BodyEncoding = System.Text.Encoding.UTF8;
+                mail.IsBodyHtml = true;
+                mail.Priority = MailPriority.High;
+                SmtpClient client = new SmtpClient();
+                client.UseDefaultCredentials = false;
+                client.Credentials = new System.Net.NetworkCredential("Company Email HERE", "Account password HERE");
+                client.Port = 587;
+                client.Host = "smtp.gmail.com";
+                client.EnableSsl = true;
+                try
+                {
+                    client.Send(mail);    
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
                 return RedirectToAction("Index");
+                */
             }
+
             return View(employee);
         }
 

@@ -4,10 +4,11 @@
 @{ 
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<head>
-    <title>Funcionários</title>
-    <link rel="stylesheet" href="~/Content/Modal-style.css" type="text/css" />
-</head>
+    <head>
+        <title>Funcionários</title>
+        <link rel="stylesheet" href="~/Content/Modal-style.css" type="text/css" />
+        <link href="~/DataTables/datatables.min.css" rel="stylesheet" />
+    </head>
 <body>
 
     <h2>Lista de funcionários</h2>
@@ -15,7 +16,7 @@
       <button class="btn btn-outline-dark" onclick="location.href='@Url.Action("Create", "Employee")'">Novo funcionário</button>  
     </p>
 
-    <table id="myTable" class="table table-dark alert-dark">
+    <table id="myTable" class="table table-bordered alert-dark">
 
         <thead>
             <tr>
@@ -50,7 +51,7 @@
                 <div class="popup popup-content">
                     <h4><strong>Editar Funcionário</strong></h4>
                     <label for="id">ID</label>
-                    <input id="id" name="EmployeeId" />
+                    <input id="id" name="EmployeeId"/>
 
                     <label for="nome">Nome</label>
                     <input id="nome" name="EmployeeFirstName" />
@@ -95,7 +96,7 @@
                     "processing": true,
                     "filter": true,
                     "lengthMenu": [[3, 5, 10, 25, 50, -1], [3, 5, 10, 25, 50, "Todos"]],
-                    "pageLength": 5,
+                    "pageLength": 10,
 
                     "ajax": {
                         "type": "GET",
@@ -129,7 +130,7 @@
                         },
                         {
                             render: function (data, type, row) {
-                                return "<a  href='#' class=actions onclick=ConfirmDelete('" + row.EmployeeId + "')>Deletar</a> ou <a href='#' onclick=EditEmployee('" + row.EmployeeId + "')>Editar</a>";
+                                return "<a  href='#' class=actions onclick=ConfirmDelete('" + row.EmployeeId + "')>Deletar</a>   <a href='#' onclick=EditEmployee('" + row.EmployeeId + "')>Editar</a>";
                             }
                         }      
                     ]

@@ -18,7 +18,7 @@ function DeleteEmp() {
         data: { id: EmpID },  
 
         error: function () {
-            alert("ERROR");
+            alert("ERRO");
         },
         success: function () {
             modalBg.classList.add('popup-disable');    
